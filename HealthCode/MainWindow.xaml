@@ -1,0 +1,46 @@
+﻿<Window x:Class="HealthCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCode"
+        mc:Ignorable="d" ResizeMode="CanMinimize" FontSize="16"
+        Title="MainWindow" Height="300" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="若此同学的检测结果为阳性" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox Name="CBox_Source" Grid.Column="1" VerticalAlignment="Center" SelectionChanged="CalcInfactionRate"/>
+        </Grid>
+        <Grid Margin="5" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="则此同学可能的感染风险为" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox Name="CBox_Target" Grid.Column="1" VerticalAlignment="Center" SelectionChanged="CalcInfactionRate"/>
+        </Grid>
+            <Grid Grid.Row="2">
+                <Rectangle x:Name="Rect_Health" Width="150" Height="150" Fill="LightGreen" RadiusX="25" RadiusY="25"/>
+                <TextBlock x:Name="TBlock_Rate" Text="0%" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32"/>
+            </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Margin="5" Content="加载学生列表" Click="LoadStudents"/>
+            <Button Grid.Column="2" Margin="5" Content="加载接触历史" Click="LoadContacts"/>
+        </Grid>
+    </Grid>
+</Window>
