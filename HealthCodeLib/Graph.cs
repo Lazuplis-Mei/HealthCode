@@ -65,12 +65,9 @@ namespace HealthCodeLib
                 accessedId.Add(sourceId);
                 foreach (var id in node.ContactId)
                 {
-                    if (!accessedId.Contains(id))
-                    {
-                        int temp = GetInfactionCount(id, targetId);
-                        if (temp < count)
-                            count = temp;
-                    }
+                    if (accessedId.Contains(id))
+                        continue;
+                    count = Math.Min(count, GetInfactionCount(id, targetId));
                 }
                 accessedId.Remove(sourceId);
                 return Math.Min(count + 1, MAXCOUNT);
